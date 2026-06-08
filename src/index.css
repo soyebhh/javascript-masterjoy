@@ -4,26 +4,26 @@
 
 
 :root {
-  /* Clean Simple Light Theme */
-  --bg-paper: #FFFFFF;
-  --bg-paper-dark: #FDFDFD;
-  --bg-paper-darker: #F7F7F7;
-  --glass-bg: rgba(255, 255, 255, 0.95);
-  --glass-border: rgba(0, 0, 0, 0.05);
+  /* Clean Simple Dark Theme */
+  --bg-paper: #0F172A;
+  --bg-paper-dark: #020617;
+  --bg-paper-darker: #1E293B;
+  --glass-bg: rgba(15, 23, 42, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.1);
   
-  --text-ink: #1F2937;
-  --text-ink-light: #6B7280;
+  --text-ink: #F8FAFC;
+  --text-ink-light: #94A3B8;
   
   --brand: #5022C3;       
-  --brand-glow: 0 4px 15px rgba(80, 34, 195, 0.2);
+  --brand-glow: 0 4px 15px rgba(80, 34, 195, 0.4);
   --success: #10B981;
-  --success-glow: 0 4px 10px rgba(16, 185, 129, 0.2);
+  --success-glow: 0 4px 10px rgba(16, 185, 129, 0.3);
   --warning: #F59E0B;
   --error: #EF4444;
   
-  --tx-1: #1F2937;
-  --tx-2: #6B7280;
-  --tx-3: #9CA3AF;
+  --tx-1: #F8FAFC;
+  --tx-2: #94A3B8;
+  --tx-3: #64748B;
 
   /* Retro Computer Theme */
   --terminal-bg: #121413;
