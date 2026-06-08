@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Master Quest — Learn JavaScript Through Play</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- INTRO OVERLAY                       -->
+  <!-- ═══════════════════════════════════ -->
+  <div id="intro-overlay" class="overlay">
+    <div class="modal-card">
+      <div class="intro-logo">⚔️</div>
+      <h1>JS Master Quest</h1>
+      <p class="intro-sub">Learn JavaScript by going on an epic coding adventure!</p>
+      <div class="chapter-list">
+        <div class="cl-item unlocked">📦 Chapter 1 — The Outpost of Variables</div>
+        <div class="cl-item unlocked">🔀 Chapter 2 — The Twin Gates (If/Else)</div>
+        <div class="cl-item unlocked">⚙️ Chapter 3 — The Factory of Functions</div>
+        <div class="cl-item locked">🔒 Chapters 4–10 — Unlock by playing!</div>
+      </div>
+      <button id="start-btn" class="btn btn-glow">⚔️ Begin Your Journey</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- LEVEL CLEAR OVERLAY                  -->
+  <!-- ═══════════════════════════════════ -->
+  <div id="clear-overlay" class="overlay hidden">
+    <div class="modal-card clear-card">
+      <div id="clear-trophy">🏆</div>
+      <h2 id="clear-title">Chapter Complete!</h2>
+      <div id="stars-display" class="stars-display"></div>
+      <p id="clear-info" class="clear-info"></p>
+      <div class="clear-actions">
+        <button id="next-btn" class="btn btn-glow">Next Chapter ⟶</button>
+        <button id="retry-btn" class="btn btn-outline">↺ Retry for Stars</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- MAIN APP                            -->
+  <!-- ═══════════════════════════════════ -->
+  <div id="app" class="hidden">
+
+    <!-- TOP BAR -->
+    <header id="top-bar">
+      <div class="tb-logo">⚔️ JS Master Quest</div>
+      <nav id="chapter-nav" class="chapter-nav"></nav>
+      <div class="tb-xp">⚡ <span id="xp-val">0</span> XP</div>
+    </header>
+
+    <!-- SPLIT LAYOUT -->
+    <div id="game-area">
+
+      <!-- ─────────────────────────────── -->
+      <!-- LEFT: MENTOR PANEL              -->
+      <!-- ─────────────────────────────── -->
+      <aside id="mentor-panel">
+        <div id="mentor-header">
+          <span id="mentor-badge"></span>
+          <div>
+            <div id="ch-label" class="ch-label"></div>
+            <h2 id="ch-title"></h2>
+          </div>
+        </div>
+        <div id="mentor-body">
+          <div class="story-box" id="story-text"></div>
+          <div class="scroll-card">
+            <div class="scroll-title">📜 The Knowledge Scroll</div>
+            <div id="concept-text" class="scroll-body"></div>
+            <pre id="concept-code" class="code-block"></pre>
+          </div>
+          <div class="scroll-card challenge-card">
+            <div class="scroll-title">⚔️ Your Challenge</div>
+            <div id="challenge-text" class="scroll-body"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ─────────────────────────────── -->
+      <!-- RIGHT: GAME PANEL               -->
+      <!-- ─────────────────────────────── -->
+      <section id="game-panel">
+
+        <!-- QUEST MAP (Canvas) -->
+        <div id="canvas-wrap">
+          <div class="panel-hdr">
+            <span>🗺️ Quest Map</span>
+            <span id="map-status" class="map-status">Awaiting your code...</span>
+          </div>
+          <div id="game-grid"></div>
+          <div id="grid-msg" class="grid-msg hidden"></div>
+        </div>
+
+        <!-- CODE EDITOR -->
+        <div id="editor-wrap">
+          <div class="panel-hdr">
+            <span>💻 Code Editor — JavaScript</span>
+            <div class="editor-actions">
+              <button id="hint-btn" class="btn btn-hint">💡 Hint (2)</button>
+              <button id="reset-btn" class="btn btn-sm-outline">↺ Reset</button>
+            </div>
+          </div>
+          <div id="editor-inner">
+            <div id="line-nums"></div>
+            <textarea id="code-editor" spellcheck="false" autocorrect="off" autocomplete="off" autocapitalize="off"></textarea>
+          </div>
+          <div id="editor-footer">
+            <div id="console-out" class="console-out">
+              <span class="console-arrow">▸</span>
+              <span id="console-text">Ready. Write your code and click Run!</span>
+            </div>
+            <button id="run-btn" class="btn btn-run">▶ Run Code</button>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
