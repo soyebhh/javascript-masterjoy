@@ -150,7 +150,10 @@ export default function Home() {
               </button>
 
               <button 
-                onClick={() => navigate('/chapter/intro')}
+                onClick={() => {
+                  const el = document.getElementById('syllabus');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
                 style={{
                   background: 'rgba(255,255,255,0.03)',
                   color: 'var(--tx-2)',
@@ -217,6 +220,64 @@ export default function Home() {
             </div>
           </div>
 
+        </div>
+
+        {/* 2. Modules List (Syllabus) */}
+        <div id="syllabus" style={{ marginTop: '20px' }}>
+          <h2 style={{ fontSize: 24, fontWeight: 700, color: '#fff', marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
+            Syllabus
+          </h2>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+            {questList.map((chapter) => {
+              const totalChLvl = chapter.levels.length;
+              const completedChLvl = chapter.levels.filter(l => isCompleted(l.levelId)).length;
+              const percent = Math.round((completedChLvl / totalChLvl) * 100);
+
+              return (
+                <div 
+                  key={chapter.id} 
+                  onClick={() => navigate(`/chapter/${chapter.id}`)}
+                  style={{
+                    background: 'linear-gradient(145deg, #1E293B, #0F172A)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    borderRadius: 16,
+                    padding: 24,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    transition: 'all 0.2s ease',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--brand)';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <div>
+                    <h3 style={{ margin: '0 0 8px 0', fontSize: 18, color: '#fff', fontFamily: "'Inter', sans-serif" }}>{chapter.title}</h3>
+                    <div style={{ fontSize: 14, color: 'var(--tx-2)' }}>
+                      {totalChLvl} Lessons
+                    </div>
+                  </div>
+                  
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
+                    <div style={{ width: 100, height: 6, background: 'rgba(255,255,255,0.1)', borderRadius: 3, overflow: 'hidden' }}>
+                      <div style={{ width: `${percent}%`, height: '100%', background: 'var(--brand)', borderRadius: 3 }} />
+                    </div>
+                    <span style={{ fontSize: 14, fontWeight: 600, color: percent === 100 ? '#22c55e' : 'var(--brand)', width: 40, textAlign: 'right' }}>
+                      {percent}%
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
         
       </div>

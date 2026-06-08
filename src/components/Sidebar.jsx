@@ -108,6 +108,29 @@ export default function Sidebar({ isOpen, onClose }) {
           })}
         </nav>
 
+        {/* Special Links */}
+        <div style={{ padding: '0 20px 15px 20px' }}>
+          <div
+            onClick={() => { navigate('/arcade'); if(window.innerWidth < 768) onClose?.(); }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '12px 15px',
+              background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1))',
+              border: '1px solid rgba(139, 92, 246, 0.2)',
+              borderRadius: '12px',
+              cursor: 'pointer',
+              color: 'var(--text-ink)',
+              fontWeight: '700',
+              transition: 'all 0.2s',
+            }}
+          >
+            <span style={{ fontSize: '18px' }}>🕹️</span>
+            Arcade (Timepass)
+          </div>
+        </div>
+
         {/* Footer */}
         <div className="sidebar-footer">
           <div style={{ marginBottom: '4px' }}>{allChapters.length} chapters · 5 levels</div>
