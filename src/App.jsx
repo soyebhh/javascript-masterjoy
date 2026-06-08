@@ -12,10 +12,9 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<LearnChapter />} />
+            <Route index element={<Home />} />
             <Route path="chapter/:chapterId" element={<LearnChapter />} />
             <Route path="chapter/:chapterId/:levelId" element={<Chapter />} />
-            <Route path="quest" element={<Home />} />
             <Route path="arcade" element={<Arcade />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>

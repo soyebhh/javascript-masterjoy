@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import content1 from '../data/content';
 import content2 from '../data/content2';
 import { useGame } from '../context/GameContext';
-import Sidebar from '../components/Sidebar';
 import confetti from 'canvas-confetti';
 import { t } from '../data/translationEngine';
 
@@ -26,8 +25,6 @@ export default function LearnChapter() {
   const chapterId = routeChapterId || "intro";
   const navigate = useNavigate();
   const { isCompleted, completeLevel, addXp, language } = useGame();
-
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const chapterData = allContent[chapterId];
   
   // Quiz State
@@ -86,30 +83,6 @@ export default function LearnChapter() {
   return (
     <div style={{ display: 'flex', width: '100%', height: 'calc(100vh - 60px)', overflow: 'hidden' }}>
       
-      {/* 1. LEFT SIDEBAR */}
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-
-      {/* Mobile toggle button */}
-      <button 
-        className="sidebar-mobile-toggle"
-        onClick={() => setIsSidebarOpen(true)}
-        style={{
-          position: 'fixed',
-          bottom: 20,
-          left: 20,
-          background: 'var(--brand)',
-          color: '#000',
-          border: 'none',
-          padding: 12,
-          borderRadius: '50%',
-          boxShadow: 'var(--brand-glow)',
-          cursor: 'pointer',
-          zIndex: 99
-        }}
-      >
-        📖
-      </button>
-
       {/* 2. MAIN READING MATERIAL PANEL */}
       <div style={{ flex: 1, overflowY: 'auto', padding: '40px 30px', boxSizing: 'border-box' }} className="reading-panel">
         
