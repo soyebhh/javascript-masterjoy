@@ -420,22 +420,32 @@ code {
   }
 
   .top-bar {
-    padding: 15px 10px;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+    padding: 10px 15px;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+    min-height: auto;
   }
   
   .top-bar-title {
-    font-size: 20px;
+    display: none; /* Hide title on mobile to save space */
   }
   
   .top-bar-nav {
-    gap: 10px;
+    gap: 15px;
+    flex: 1;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  
+  .top-nav-btn {
+    white-space: nowrap;
   }
   
   .top-bar-actions {
     gap: 10px;
+    flex-shrink: 0;
   }
   
   .quest-board {
