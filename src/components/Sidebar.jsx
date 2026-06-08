@@ -41,10 +41,13 @@ export default function Sidebar({ isOpen, onClose }) {
 
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
         {/* Logo */}
-        <div className="sidebar-logo" onClick={() => { navigate('/'); onClose?.(); }} style={{ cursor: 'pointer' }}>
+        <div className="sidebar-logo" onClick={() => { navigate('/'); onClose?.(); }} style={{ cursor: 'pointer', padding: '24px 20px', borderBottom: '1px solid var(--glass-border)', display: 'flex', gap: '15px', alignItems: 'center' }}>
+          <div style={{ background: 'var(--brand)', color: '#000', fontWeight: '900', fontSize: '18px', width: '38px', height: '38px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Outfit', sans-serif", flexShrink: 0 }}>
+            JS
+          </div>
           <div className="sidebar-logo-text">
-            <div className="sidebar-logo-name" style={{ fontFamily: "'Outfit', sans-serif" }}>JavaScript Masterjoy</div>
-            <div className="sidebar-logo-sub" style={{ fontFamily: "'Inter', sans-serif" }}>Complete Guide</div>
+            <div className="sidebar-logo-name" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '18px', fontWeight: '800', color: 'var(--text-ink)', lineHeight: 1.2 }}>JS Mastery</div>
+            <div className="sidebar-logo-sub" style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: 'var(--text-ink-light)' }}>Notes & Guide</div>
           </div>
         </div>
 

@@ -5,25 +5,25 @@
 
 :root {
   /* Clean Simple Dark Theme */
-  --bg-paper: #0F172A;
-  --bg-paper-dark: #020617;
-  --bg-paper-darker: #1E293B;
-  --glass-bg: rgba(15, 23, 42, 0.95);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --bg-paper: #111827; /* Tailwind gray-900 for sidebar */
+  --bg-paper-dark: #030712; /* Tailwind gray-950 for main bg */
+  --bg-paper-darker: #1F2937; /* gray-800 for cards */
+  --glass-bg: rgba(17, 24, 39, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.08);
   
-  --text-ink: #F8FAFC;
-  --text-ink-light: #94A3B8;
+  --text-ink: #F9FAFB; /* gray-50 */
+  --text-ink-light: #9CA3AF; /* gray-400 */
   
-  --brand: #5022C3;       
-  --brand-glow: 0 4px 15px rgba(80, 34, 195, 0.4);
+  --brand: #FACC15; /* Tailwind yellow-400 */
+  --brand-glow: 0 4px 20px rgba(250, 204, 21, 0.3);
   --success: #10B981;
   --success-glow: 0 4px 10px rgba(16, 185, 129, 0.3);
   --warning: #F59E0B;
   --error: #EF4444;
   
-  --tx-1: #F8FAFC;
-  --tx-2: #94A3B8;
-  --tx-3: #64748B;
+  --tx-1: #F9FAFB;
+  --tx-2: #9CA3AF;
+  --tx-3: #6B7280;
 
   /* Retro Computer Theme */
   --terminal-bg: #121413;
@@ -38,7 +38,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: var(--bg-paper);
+  background: var(--bg-paper-dark);
   color: var(--text-ink);
   min-height: 100vh;
   overflow: hidden; 
