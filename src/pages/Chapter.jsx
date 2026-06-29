@@ -44,23 +44,41 @@ export default function Chapter() {
       return;
     }
     
-    // Reset and initialize quest state
-    setCode(levelData.starterCode);
+    // Load saved progress from localStorage if available
+    const savedCode = localStorage.getItem(`quest_code_${levelId}`);
+    setCode(savedCode !== null ? savedCode : levelData.starterCode);
+    
+    const savedPhase = localStorage.getItem(`dojo_phase_${levelId}`);
+    setCurrentPhase(savedPhase !== null ? savedPhase : 'LEARNING');
+    
+    const savedStep = localStorage.getItem(`dojo_step_${levelId}`);
+    setCurrentStepIndex(savedStep !== null ? parseInt(savedStep, 10) : 0);
+
     setOutput(t('awaitingCode', language));
     setOutputType('');
     setDynamicCells([...levelData.grid.cells]);
     setLevelClear(isCompleted(levelId));
     setIsAnimating(false);
 
-    // Reset Dojo state for the new level
-    setCurrentPhase('LEARNING');
-    setCurrentStepIndex(0);
     setSelectedOption(null);
     setFilledBlank('');
     setIsDojoCleared(false);
     setDojoFeedback(null);
     setShakeDojo(false);
   }, [chapterId, levelId, levelData, isCompleted, language]);
+
+  // Save state to localStorage whenever it changes
+  useEffect(() => {
+    if (levelId) localStorage.setItem(`quest_code_${levelId}`, code);
+  }, [code, levelId]);
+
+  useEffect(() => {
+    if (levelId) localStorage.setItem(`dojo_phase_${levelId}`, currentPhase);
+  }, [currentPhase, levelId]);
+
+  useEffect(() => {
+    if (levelId) localStorage.setItem(`dojo_step_${levelId}`, currentStepIndex);
+  }, [currentStepIndex, levelId]);
 
   if (!levelData) return null;
 

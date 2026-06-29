@@ -5,19 +5,20 @@ import content2 from '../data/content2';
 import { useGame } from '../context/GameContext';
 import confetti from 'canvas-confetti';
 import { t } from '../data/translationEngine';
+import { quests } from '../data/gridQuests';
 
 const allContent = { ...content1, ...content2 };
 
-// Map chapterId to Quest level if exists
+// Map chapterId to Quest chapter key if it has one
 const QUEST_MAP = {
-  "intro": "1.1",
-  "variables": "1.1",
-  "conditionals": "2.1",
-  "functions": "3.1",
-  "scope": "3.4",
-  "arrays": "4.1",
-  "loops": "5.1",
-  "objects": "6.1"
+  "intro": "intro",
+  "variables": "intro",
+  "conditionals": "ifelse",
+  "functions": "functions",
+  "scope": "functions",
+  "arrays": "arrays",
+  "loops": "loops",
+  "objects": "objects"
 };
 
 export default function LearnChapter() {
@@ -99,10 +100,15 @@ export default function LearnChapter() {
             <button 
               className="btn-run" 
               onClick={() => {
-                // Find chapter object key in quests
-                // For variables/intro we go to 'intro' chapter
-                const questChapterKey = ['intro', 'ifelse', 'functions', 'arrays', 'loops', 'objects'].find(k => k === chapterId || (chapterId === 'variables' && k === 'intro') || (chapterId === 'conditionals' && k === 'ifelse'));
-                navigate(`/chapter/${questChapterKey || 'intro'}/${questLevelId}`);
+                const questChapterKey = QUEST_MAP[chapterId];
+                if (!questChapterKey || !quests[questChapterKey]) return;
+                
+                // Find the first uncompleted level in this quest chapter
+                const chapterLevels = quests[questChapterKey].levels;
+                const firstUncompleted = chapterLevels.find(l => !isCompleted(l.levelId));
+                const targetLevel = firstUncompleted ? firstUncompleted.levelId : chapterLevels[0].levelId;
+                
+                navigate(`/chapter/${questChapterKey}/${targetLevel}`);
               }}
               style={{
                 background: 'var(--text-ink)',

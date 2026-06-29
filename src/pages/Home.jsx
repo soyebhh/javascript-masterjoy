@@ -23,7 +23,22 @@ export default function Home() {
         const isFirstEver = chapter.id === 'intro' && i === 0;
         const unlocked = isFirstEver || isUnlocked(lvl.levelId, prevLvl);
         if (unlocked && !isCompleted(lvl.levelId)) {
-          navigate(`/chapter/${chapter.id}`);
+          const theoryMapping = {
+            'intro': 'variables',
+            'ifelse': 'conditionals',
+            'functions': 'functions',
+            'arrays': 'arrays',
+            'loops': 'loops',
+            'objects': 'objects'
+          };
+          const theoryId = theoryMapping[chapter.id] || chapter.id;
+          
+          if (isCompleted(theoryId)) {
+            // Theory done, jump right back into the quest action!
+            navigate(`/chapter/${chapter.id}/${lvl.levelId}`);
+          } else {
+            navigate(`/chapter/${theoryId}`);
+          }
           return;
         }
       }
@@ -237,7 +252,18 @@ export default function Home() {
               return (
                 <div 
                   key={chapter.id} 
-                  onClick={() => navigate(`/chapter/${chapter.id}`)}
+                  onClick={() => {
+                    const theoryMapping = {
+                      'intro': 'variables',
+                      'ifelse': 'conditionals',
+                      'functions': 'functions',
+                      'arrays': 'arrays',
+                      'loops': 'loops',
+                      'objects': 'objects'
+                    };
+                    const theoryId = theoryMapping[chapter.id] || chapter.id;
+                    navigate(`/chapter/${theoryId}`);
+                  }}
                   style={{
                     background: 'linear-gradient(145deg, #1E293B, #0F172A)',
                     border: '1px solid rgba(255,255,255,0.05)',
